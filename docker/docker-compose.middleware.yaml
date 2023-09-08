@@ -6,9 +6,9 @@ services:
     restart: always
     environment:
       # The password for the default postgres user.
-      POSTGRES_PASSWORD: difyai123456
+      POSTGRES_PASSWORD: xswlxswl1
       # The name of the default postgres database.
-      POSTGRES_DB: dify
+      POSTGRES_DB: botly
       # postgres data directory
       PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
@@ -24,7 +24,7 @@ services:
       # Mount the redis data directory to the container.
       - ./volumes/redis/data:/data
     # Set the redis password when startup redis server.
-    command: redis-server --requirepass difyai123456
+    command: redis-server --requirepass xswlxswl1
     ports:
       - "6379:6379"
 
