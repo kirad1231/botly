@@ -2,7 +2,7 @@ version: '3.1'
 services:
   # API service
   api:
-    image: langgenius/dify-api:0.3.19
+    image: kirasuper/botly:latest
     restart: always
     environment:
       # Startup mode, 'api' starts the API server.
@@ -35,32 +35,32 @@ services:
       MIGRATION_ENABLED: 'true'
       # The configurations of postgres database connection.
       # It is consistent with the configuration in the 'db' service below.
-      DB_USERNAME: postgres
-      DB_PASSWORD: difyai123456
-      DB_HOST: db
+      DB_USERNAME: botly
+      DB_PASSWORD: xswlxswl1
+      DB_HOST: localhost
       DB_PORT: 5432
-      DB_DATABASE: dify
+      DB_DATABASE: botlydatabase
       # The configurations of redis connection.
       # It is consistent with the configuration in the 'redis' service below.
-      REDIS_HOST: redis
+      REDIS_HOST: localhost
       REDIS_PORT: 6379
       REDIS_USERNAME: ''
-      REDIS_PASSWORD: difyai123456
+      REDIS_PASSWORD: xswlxswl1
       REDIS_USE_SSL: 'false'
       # use redis db 0 for redis cache
       REDIS_DB: 0
       # The configurations of session, Supported values are `sqlalchemy`. `redis`
       SESSION_TYPE: redis
-      SESSION_REDIS_HOST: redis
+      SESSION_REDIS_HOST: localhost
       SESSION_REDIS_PORT: 6379
       SESSION_REDIS_USERNAME: ''
-      SESSION_REDIS_PASSWORD: difyai123456
+      SESSION_REDIS_PASSWORD: xswlxswl1
       SESSION_REDIS_USE_SSL: 'false'
       # use redis db 2 for session store
       SESSION_REDIS_DB: 2
       # The configurations of celery broker.
       # Use redis as the broker, and redis db 1 for celery broker.
-      CELERY_BROKER_URL: redis://:difyai123456@redis:6379/1
+      CELERY_BROKER_URL: redis://:xswlxswl1@localhost:6379/1
       # Specifies the allowed origins for cross-origin requests to the Web API, e.g. https://dify.app or * for all origins.
       WEB_API_CORS_ALLOW_ORIGINS: '*'
       # Specifies the allowed origins for cross-origin requests to the console API, e.g. https://cloud.dify.ai or * for all origins.
@@ -124,7 +124,7 @@ services:
   # worker service
   # The Celery worker for processing the queue.
   worker:
-    image: langgenius/dify-api:0.3.19
+    image: kirasuper/dify-api:latest
     restart: always
     environment:
       # Startup mode, 'worker' starts the Celery worker for processing the queue.
@@ -139,20 +139,20 @@ services:
       SECRET_KEY: sk-9f73s3ljTXVcMT3Blb3ljTqtsKiGHXVcMT3BlbkFJLK7U
       # The configurations of postgres database connection.
       # It is consistent with the configuration in the 'db' service below.
-      DB_USERNAME: postgres
-      DB_PASSWORD: difyai123456
-      DB_HOST: db
+      DB_USERNAME: botly
+      DB_PASSWORD: xswlxswl1
+      DB_HOST: localhost
       DB_PORT: 5432
-      DB_DATABASE: dify
+      DB_DATABASE: botlydatabase
       # The configurations of redis cache connection.
-      REDIS_HOST: redis
+      REDIS_HOST: localhost
       REDIS_PORT: 6379
       REDIS_USERNAME: ''
-      REDIS_PASSWORD: difyai123456
+      REDIS_PASSWORD: xswlxswl1
       REDIS_DB: 0
       REDIS_USE_SSL: 'false'
       # The configurations of celery broker.
-      CELERY_BROKER_URL: redis://:difyai123456@redis:6379/1
+      CELERY_BROKER_URL: redis://:xswlxswl1@localhost:6379/1
       # The type of storage to use for storing user files. Supported values are `local` and `s3`, Default: `local`
       STORAGE_TYPE: local
       STORAGE_LOCAL_PATH: storage
@@ -176,7 +176,7 @@ services:
 
   # Frontend web application.
   web:
-    image: langgenius/dify-web:0.3.19
+    image: kirasuper/botly:latest
     restart: always
     environment:
       EDITION: SELF_HOSTED
@@ -197,9 +197,9 @@ services:
     restart: always
     environment:
       # The password for the default postgres user.
-      POSTGRES_PASSWORD: difyai123456
+      POSTGRES_PASSWORD: xswlxswl1
       # The name of the default postgres database.
-      POSTGRES_DB: dify
+      POSTGRES_DB: 
       # postgres data directory
       PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
